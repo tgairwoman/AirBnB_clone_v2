@@ -130,10 +130,11 @@ class HBNBCommand(cmd.Cmd):
         for kwarg in kwargs:
             arg = kwarg.partition('=')
             value = arg[2].replace('"', '')
+            value = value.replace("_", ' ')
             # if the key has a type cast it to that type.
             if hasattr(new_instance, arg[0]):
                 _type = type(getattr(new_instance, arg[0]))
-                value = _type(arg[2])
+                value = _type(value)
             setattr(new_instance, arg[0], value)
         storage.save()
         print(new_instance.id)
