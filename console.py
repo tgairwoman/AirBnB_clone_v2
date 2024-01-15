@@ -131,11 +131,11 @@ class HBNBCommand(cmd.Cmd):
             arg = kwarg.partition('=')
             value = arg[2].replace('"', '')
             value = value.replace("_", ' ')
-            # if the key has a type cast it to that type.
             if hasattr(new_instance, arg[0]):
+                # if the key has a type cast it to that type.
                 _type = type(getattr(new_instance, arg[0]))
                 value = _type(value)
-            setattr(new_instance, arg[0], value)
+                setattr(new_instance, arg[0], value)
         storage.save()
         print(new_instance.id)
         storage.save()
