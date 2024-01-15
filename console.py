@@ -135,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
                 # if the key has a type cast it to that type.
                 _type = type(getattr(new_instance, arg[0]))
                 value = _type(value)
-                setattr(new_instance, arg[0], value)
+            setattr(new_instance, arg[0], value)
         storage.save()
         print(new_instance.id)
         storage.save()
