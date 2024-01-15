@@ -123,8 +123,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         kwargs = args.split(' ')
-        for kwarg in kwargs:
-            print(kwarg)
         new_instance = HBNBCommand.classes[class_name]()
         kwargs = kwargs[1:]
         for kwarg in kwargs:
