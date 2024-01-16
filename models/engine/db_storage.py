@@ -37,7 +37,7 @@ class DBStorage:
                 key = "{}.{}".format(instance.__class__.__name__, instance.id)
                 result[key] = instance
         else:
-            objects = [State, City]
+            objects = [State, City, User]
             for obj in objects:
                 instances = self.__session.query(obj)
                 for instance in instances:
