@@ -59,8 +59,10 @@ class test_basemodel(unittest.TestCase):
     def test_str(self):
         """ """
         i = self.value()
+        _copy = i.__dict__.copy()
+        del _copy['_sa_instance_state']
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id,
-                         i.__dict__))
+                         _copy))
 
     def test_todict(self):
         """ """
