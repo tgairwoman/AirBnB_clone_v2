@@ -60,7 +60,8 @@ class test_basemodel(unittest.TestCase):
         """ """
         i = self.value()
         _copy = i.__dict__.copy()
-        del _copy['_sa_instance_state']
+        if '_sa_instance_state' in _copy.keys():
+            del _copy['_sa_instance_state']
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id,
                          _copy))
 
@@ -79,8 +80,8 @@ class test_basemodel(unittest.TestCase):
     def test_kwargs_one(self):
         """ """
         n = {'Name': 'test'}
-        with self.assertRaises(KeyError):
-            new = self.value(**n)
+        new = self.value(**n)
+        self.assertEqual(new.Name, 'test')
 
     def test_id(self):
         """ """
