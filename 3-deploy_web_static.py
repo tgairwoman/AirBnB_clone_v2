@@ -6,7 +6,6 @@ from os.path import exists
 
 env.hosts = ['54.198.80.67', '100.26.152.235']
 
-
 def do_pack():
     """pack a web_static folder to .tgz"""
     try:
@@ -48,4 +47,5 @@ def deploy():
     path = do_pack()
     if path == None:
         return False
-    return do_deploy(path)
+    result = do_deploy(path)
+    return result
