@@ -27,4 +27,8 @@ def do_deploy(archive_path):
         run("mkdir -p /data/web_static/releases/{}/".format(_name))
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(_name_w_extension, _name))
         run("rm {}".format(_name_w_extension))
-        run("mv {}".format(
+        run("mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/".format(_name, _name))
+        run("rm -rf /data/web_static/releases/{}/web_static".format(_name))
+        run("rm -rf /data/web_static/current")
+        run("ln -s /data/web_static/releases/{}/ /data/web_static_current".format(_name))
+        print("New version deployed!")
