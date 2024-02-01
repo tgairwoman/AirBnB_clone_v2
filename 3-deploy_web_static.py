@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """generates a .tgz archive from the contents of the web_static folder."""
-from fabric.api import local, env, run, put
+from fabric.api import run, local, run, env, put
 from datetime import datetime
 from os.path import exists
 
@@ -43,9 +43,11 @@ def do_deploy(archive_path):
         print(e)
         return False
 
+
 def deploy():
     """deploys web_static to web servers"""
     path = do_pack()
-    if path == None:
+    if path is None:
         return False
-    return do_deploy(path)
+    result = do_deploy(path)
+    return result
