@@ -2,7 +2,7 @@
 """generates a .tgz archive from the contents of the web_static folder."""
 from fabric.api import local, env, run, put
 from datetime import datetime
-import os
+from os.path import exists
 
 env.hosts = ['54.198.80.67', '100.26.152.235']
 
@@ -21,6 +21,8 @@ def do_pack():
 
 def do_deploy(archive_path):
     """deploys web_static to web servers"""
+    if not exists(archive_path):
+        return False
     try:
         _name_w_extension = archive_path.split('/')[-1]
         _name = archive_path.split('/')[-1].split('.')[0]
