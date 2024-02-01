@@ -29,12 +29,12 @@ def do_deploy(archive_path):
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(
             _name_w_extension, _name))
         run("rm /tmp/{}".format(_name_w_extension))
-        run("mv /data/web_static/releases/{}/web_static/*" +
-            " /data/web_static/releases/{}/".format(_name, _name))
+        run(("mv /data/web_static/releases/{}/web_static/*"
+             " /data/web_static/releases/{}/").format(_name, _name))
         run("rm -rf /data/web_static/releases/{}/web_static".format(_name))
         run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}" +
-            " /data/web_static/current".format(_name))
+        run(("ln -s /data/web_static/releases/{}"
+             " /data/web_static/current").format(_name))
         print("New version deployed!")
         return True
     except Exception as e:
