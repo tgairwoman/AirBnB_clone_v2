@@ -58,4 +58,4 @@ def do_clean(number=0):
         number = 1
     path = "/data/web_static/releases"
     local("cd versions && ls -t | head -n -{} | xargs rm -rf".format(number))
-    run("cd {} && ls -t | head -n -{} | xargs rm -rf".format(path, number))
+    run("cd {} ; ls -t | head -n -{} | xargs rm -rf".format(path, number))
