@@ -54,6 +54,7 @@ def deploy():
 
 def do_clean(number=0):
     """cleans the oldest archives"""
+    number = int(number)
     if number == 0:
         number = 1
     path = "/data/web_static/releases"
