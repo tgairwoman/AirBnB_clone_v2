@@ -43,12 +43,14 @@ def do_deploy(archive_path):
         print(e)
         return False
 
+
 def deploy():
     """deploys web_static to web servers"""
     path = do_pack()
-    if path == None:
+    if path is None:
         return False
     return do_deploy(path)
+
 
 def do_clean(number=0):
     """cleans the oldest archives"""
